@@ -38,7 +38,7 @@ resource "aws_instance" "web" {
 
   tags = {
     #Name = "DIPSHIT-EC2-Instance-${count.index + 1}"
-    Name = "Slappin' up the block all night"
+    Name = "Worker"
   }
 }
 
