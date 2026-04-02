@@ -27,36 +27,44 @@ data "aws_ami" "ubuntu" {
 }
 
 resource "aws_instance" "bastion" {
-  # count         = 1
   ami           = data.aws_ami.ubuntu.id
   instance_type = "t2.micro"
 
-  key_name    = "AWS"
+  key_name    = "AWS"                                  # Use AWS key for SSH
   subnet_id   = "subnet-0d04810da9f7a1207"             # Public Subnet
   vpc_security_group_ids = ["sg-00d423d220bf3177d"]    # Bastion-SG
-  associate_public_ip_address = true
+  associate_public_ip_address = true                   # Retrieve public IP
 
   tags = {
-    # Name = "serv0-${count.index + 1}"
     Name = "Bastion"
   }
 }
 
 resource "aws_instance" "nat" {
-  # count         = 1
   ami           = data.aws_ami.ubuntu.id
   instance_type = "t2.micro"
 
-  key_name    = "AWS"
+  key_name    = "AWS"                                  # Use AWS key for SSH
   subnet_id   = "subnet-0d04810da9f7a1207"             # Public Subnet
   vpc_security_group_ids = ["sg-0f8f7418b9bf85183"]    # NAT-SG
-  associate_public_ip_address = true
-  source_dest_check = false
+  associate_public_ip_address = true                   # Retrieve public IP
+  source_dest_check = false                            # Disable source/destination check for NAT instance
 
   tags = {
-    # Name = "serv0-${count.index + 1}"
     Name = "NAT"
   }
+}
+
+resource "aws_route" "private1_default" {
+  route_table_id = "rtb-00ea1659f5f551aeb"                                 # Private Subnet 1 Route Table
+  destination_cidr_block = "0.0.0.0/0"                                     # Default route for all traffic
+  network_interface_id = aws_instance.nat.primary_network_interface_id     # Route through NAT instance's primary network interface
+}
+
+resource "aws_route" "private2_default" {                                   
+  route_table_id = "rtb-0379ab8857922fc90"                                 # Private Subnet 2 Route Table
+  destination_cidr_block = "0.0.0.0/0"                                     # Default route for all traffic
+  network_interface_id = aws_instance.nat.primary_network_interface_id     # Route through NAT instance's primary network interface
 }
 
 output "instances" {
@@ -72,10 +80,3 @@ output "instances" {
 
   }
 }
-
-# output "instances" {
-#   value = {
-#     for i in try(aws_instance.bastion, [aws_instance.bastion]) :
-#     i.tags["Name"] => i.public_ip
-#   }
-# }
