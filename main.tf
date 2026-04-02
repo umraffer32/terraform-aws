@@ -26,8 +26,8 @@ data "aws_ami" "ubuntu" {
   }
 }
 
-resource "aws_instance" "web" {
-  count         = 1
+resource "aws_instance" "bastion" {
+  # count         = 1
   ami           = data.aws_ami.ubuntu.id
   instance_type = "t2.micro"
 
@@ -37,13 +37,45 @@ resource "aws_instance" "web" {
   associate_public_ip_address = true
 
   tags = {
-    Name = "serv0-${count.index + 1}"
+    # Name = "serv0-${count.index + 1}"
+    Name = "Bastion"
+  }
+}
+
+resource "aws_instance" "nat" {
+  # count         = 1
+  ami           = data.aws_ami.ubuntu.id
+  instance_type = "t2.micro"
+
+  key_name    = "AWS"
+  subnet_id   = "subnet-0d04810da9f7a1207"             # Public Subnet
+  vpc_security_group_ids = ["sg-0f8f7418b9bf85183"]    # NAT-SG
+  associate_public_ip_address = true
+  source_dest_check = false
+
+  tags = {
+    # Name = "serv0-${count.index + 1}"
+    Name = "NAT"
   }
 }
 
 output "instances" {
   value = {
-    for i in try(aws_instance.web, [aws_instance.web]) :
-    i.tags["Name"] => i.public_ip
+    bastion = {
+      name = aws_instance.bastion.tags["Name"]
+      ip   = aws_instance.bastion.public_ip
+    }
+    nat = {
+      name = aws_instance.nat.tags["Name"]
+      ip   = aws_instance.nat.public_ip
+    }
+
   }
 }
+
+# output "instances" {
+#   value = {
+#     for i in try(aws_instance.bastion, [aws_instance.bastion]) :
+#     i.tags["Name"] => i.public_ip
+#   }
+# }
