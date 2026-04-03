@@ -4,3 +4,5 @@
 *.pem
 *.key
 *.code-workspace
+*.tf.bak
+*.tfvars
