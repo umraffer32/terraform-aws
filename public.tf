@@ -37,6 +37,7 @@ resource "aws_instance" "bastion" {
 
   tags = {
     Name = "Bastion"
+    Role = "bastion"
   }
 }
 
@@ -52,6 +53,7 @@ resource "aws_instance" "nat" {
 
   tags = {
     Name = "NAT"
+    Role = "nat"
   }
 }
 
