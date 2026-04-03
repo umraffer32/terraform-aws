@@ -1,4 +1,4 @@
-- name: Update bastion and NAT
+- name: Update and Upgrade Instances
   hosts: role_bastion,role_nat,role_private
   become: true
   gather_facts: false
