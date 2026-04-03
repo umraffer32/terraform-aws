@@ -38,6 +38,7 @@
       ansible.builtin.command: >
         iptables -t nat -A POSTROUTING -o {{ default_iface.stdout }} -j MASQUERADE
       when: masquerade_check.rc == 1
+      register: add_masquerade
 
     - name: Check FORWARD established rule
       ansible.builtin.command: >
@@ -52,6 +53,7 @@
         iptables -A FORWARD -i {{ default_iface.stdout }} -o {{ default_iface.stdout }}
         -m state --state RELATED,ESTABLISHED -j ACCEPT
       when: forward_established_check.rc == 1
+      register: add_forward_established
 
     - name: Check FORWARD rule
       ansible.builtin.command: >
@@ -64,13 +66,14 @@
       ansible.builtin.command: >
         iptables -A FORWARD -i {{ default_iface.stdout }} -o {{ default_iface.stdout }} -j ACCEPT
       when: forward_check.rc == 1
+      register: add_forward
 
     - name: Save iptables rules
       ansible.builtin.command: netfilter-persistent save
       when: >
-        - masquerade_check.rc == 1 or
-        - forward_established_check.rc == 1 or
-        - forward_check.rc == 1
+        (add_masquerade is changed) or
+        (add_forward_established is changed) or
+        (add_forward is changed)
 
     - name: Verify IP forwarding is enabled
       ansible.builtin.command: sysctl net.ipv4.ip_forward
@@ -93,4 +96,3 @@
         that:
           - "'MASQUERADE' in nat_table.stdout"
         fail_msg: "MASQUERADE rule not found"
-        
