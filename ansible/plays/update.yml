@@ -1,5 +1,5 @@
 - name: Update bastion and NAT
-  hosts: role_bastion,role_nat
+  hosts: role_bastion,role_nat,role_private
   become: true
   gather_facts: false
 
@@ -16,3 +16,4 @@
       ansible.builtin.apt:
         name: locales-all
         state: present
+        
