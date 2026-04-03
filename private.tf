@@ -1,5 +1,5 @@
 resource "aws_instance" "private1" {
-  count = 10  
+  count = 3  
   ami           = data.aws_ami.ubuntu.id
   instance_type = "t2.micro"
 
@@ -9,11 +9,12 @@ resource "aws_instance" "private1" {
 
   tags = {
     Name = "SN1-Private-${count.index + 1}"
+    Role = "private"
   }
 }
 
 resource "aws_instance" "private2" {
-  count = 10
+  count = 3
   ami           = data.aws_ami.ubuntu.id
   instance_type = "t2.micro"
 
@@ -23,6 +24,7 @@ resource "aws_instance" "private2" {
 
   tags = {
     Name = "SN2-Private-${count.index + 1}"
+    Role = "private"
   }
 }
 
