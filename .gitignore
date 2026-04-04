@@ -5,3 +5,4 @@
 *.key
 *.code-workspace
 terraform.tfvars
+kill-hosts.sh
