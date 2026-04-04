@@ -43,8 +43,10 @@ resource "aws_instance" "nat" {
 }
 
 resource "aws_instance" "private_1" {
+  count = var.private_1_count
+
   tags = {
-    Name = "sn1-private-1"
+    Name = "sn1-private-${count.index + 1}"
     Role = "private"
   }
 
@@ -53,13 +55,13 @@ resource "aws_instance" "private_1" {
   subnet_id              = aws_subnet.private_1.id
   vpc_security_group_ids = [aws_security_group.private_sg.id]
   key_name               = var.key_name
-
-
 }
 
 resource "aws_instance" "private_2" {
+  count = var.private_2_count
+
   tags = {
-    Name = "sn2-private-1"
+    Name = "sn2-private-${count.index + 1}"
     Role = "private"
   }
 
@@ -69,3 +71,4 @@ resource "aws_instance" "private_2" {
   vpc_security_group_ids = [aws_security_group.private_sg.id]
   key_name               = var.key_name
 }
+
