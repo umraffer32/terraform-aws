@@ -60,11 +60,12 @@ resource "aws_security_group" "nat_sg" {
   vpc_id      = aws_vpc.main.id
 
   ingress {
-    description = "Allow SSH from Main PC"
+    description = "Allow SSH from bastion-sg"
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    cidr_blocks = [var.admin_cidr]
+    #cidr_blocks = [var.admin_cidr]
+    security_groups = [aws_security_group.bastion_sg.id]
   }
 
   ingress {
