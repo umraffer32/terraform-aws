@@ -69,20 +69,23 @@ resource "aws_security_group" "nat_sg" {
   }
 
   ingress {
-    description = "All traffic from private subnet 1"
+    #description = "All traffic from private subnet 1"
+    description = "Allow all traffic from private-sg"
     from_port   = 0
     to_port     = 0
     protocol    = "-1"
-    cidr_blocks = ["10.0.2.0/24"]
+    #cidr_blocks = ["10.0.2.0/24"]
+    security_groups = [aws_security_group.private_sg.id]
   }
 
-  ingress {
-    description = "All traffic from private subnet 2"
-    from_port   = 0
-    to_port     = 0
-    protocol    = "-1"
-    cidr_blocks = ["10.0.3.0/24"]
-  }
+  # ingress {                                                       # This inbound block was unecessary because both private subnets use private-sg
+  #   description = "All traffic from private subnet 2"             # Originally I created rules based on the CIDR for the private subnets
+  #   from_port   = 0
+  #   to_port     = 0
+  #   protocol    = "-1"
+  #   #cidr_blocks = ["10.0.3.0/24"]
+  #   security_groups = [aws_security_group.private_sg.id]
+  # }
 
   egress {
     description = "Allow all outbound"
@@ -92,4 +95,5 @@ resource "aws_security_group" "nat_sg" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 }
+
 
