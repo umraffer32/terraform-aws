@@ -1,4 +1,8 @@
 resource "aws_security_group" "bastion_sg" {
+  tags = {
+    Name = "bastion-sg"
+  }
+
   name        = "bastion-sg"
   description = "Allow SSH to bastion"
   vpc_id      = aws_vpc.main.id
@@ -18,13 +22,13 @@ resource "aws_security_group" "bastion_sg" {
     protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
   }
-
-  tags = {
-    Name = "bastion-sg"
-  }
 }
 
 resource "aws_security_group" "private_sg" {
+  tags = {
+    Name = "private-sg"
+  }
+
   name        = "private-sg"
   description = "Allow SSH from bastion to private instances"
   vpc_id      = aws_vpc.main.id
@@ -44,13 +48,13 @@ resource "aws_security_group" "private_sg" {
     protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
   }
-
-  tags = {
-    Name = "private-sg"
-  }
 }
 
 resource "aws_security_group" "nat_sg" {
+  tags = {
+    Name = "nat-sg"
+  }
+
   name        = "nat-sg"
   description = "Allow private subnet traffic to NAT"
   vpc_id      = aws_vpc.main.id
@@ -85,10 +89,6 @@ resource "aws_security_group" "nat_sg" {
     to_port     = 0
     protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
-  }
-
-  tags = {
-    Name = "nat-sg"
   }
 }
 

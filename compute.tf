@@ -19,12 +19,12 @@ resource "aws_instance" "bastion" {
     Role = "bastion"
   }
 
-  ami = data.aws_ami.ubuntu.id
-  instance_type = "t2.micro"
-  subnet_id = aws_subnet.public.id
-  vpc_security_group_ids = [aws_security_group.bastion_sg.id]
+  ami                         = data.aws_ami.ubuntu.id
+  instance_type               = "t2.micro"
+  subnet_id                   = aws_subnet.public.id
+  vpc_security_group_ids      = [aws_security_group.bastion_sg.id]
   associate_public_ip_address = true
-  key_name = var.key_name
+  key_name                    = var.key_name
 }
 
 resource "aws_instance" "nat" {
@@ -33,37 +33,39 @@ resource "aws_instance" "nat" {
     Role = "nat"
   }
 
-  ami           = data.aws_ami.ubuntu.id
-  instance_type = "t2.micro"
-  subnet_id = aws_subnet.public.id
-  vpc_security_group_ids = [aws_security_group.nat_sg.id]
+  ami                         = data.aws_ami.ubuntu.id
+  instance_type               = "t2.micro"
+  subnet_id                   = aws_subnet.public.id
+  vpc_security_group_ids      = [aws_security_group.nat_sg.id]
   associate_public_ip_address = true
-  source_dest_check = false
-  key_name = var.key_name
+  source_dest_check           = false
+  key_name                    = var.key_name
 }
 
 resource "aws_instance" "private_1" {
+  tags = {
+    Name = "sn1-private-1"
+    Role = "private"
+  }
+
   ami                    = data.aws_ami.ubuntu.id
   instance_type          = "t2.micro"
   subnet_id              = aws_subnet.private_1.id
   vpc_security_group_ids = [aws_security_group.private_sg.id]
   key_name               = var.key_name
 
-  tags = {
-    Name = "sn1-private-1"
-    Role = "private"
-  }
+
 }
 
 resource "aws_instance" "private_2" {
+  tags = {
+    Name = "sn2-private-1"
+    Role = "private"
+  }
+
   ami                    = data.aws_ami.ubuntu.id
   instance_type          = "t2.micro"
   subnet_id              = aws_subnet.private_2.id
   vpc_security_group_ids = [aws_security_group.private_sg.id]
   key_name               = var.key_name
-
-  tags = {
-    Name = "sn2-private-1"
-    Role = "private"
-  }
 }
