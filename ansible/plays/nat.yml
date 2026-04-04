@@ -3,11 +3,6 @@
   become: true
 
   tasks:
-    - name: Get default interface
-      ansible.builtin.shell: ip route | awk '/default/ {print $5; exit}'
-      register: default_iface
-      changed_when: false
-
     - name: Enable IPv4 forwarding persistently
       ansible.builtin.copy:
         dest: /etc/sysctl.d/99-nat.conf
@@ -29,20 +24,20 @@
 
     - name: Check MASQUERADE rule
       ansible.builtin.command: >
-        iptables -t nat -C POSTROUTING -o {{ default_iface.stdout }} -j MASQUERADE
+        iptables -t nat -C POSTROUTING -o {{ ansible_default_ipv4.interface }} -j MASQUERADE
       register: masquerade_check
       changed_when: false
       failed_when: masquerade_check.rc not in [0, 1]
 
     - name: Add MASQUERADE rule if missing
       ansible.builtin.command: >
-        iptables -t nat -A POSTROUTING -o {{ default_iface.stdout }} -j MASQUERADE
+        iptables -t nat -A POSTROUTING -o {{ ansible_default_ipv4.interface }} -j MASQUERADE
       when: masquerade_check.rc == 1
       register: add_masquerade
 
     - name: Check FORWARD established rule
       ansible.builtin.command: >
-        iptables -C FORWARD -i {{ default_iface.stdout }} -o {{ default_iface.stdout }}
+        iptables -C FORWARD -i {{ ansible_default_ipv4.interface }} -o {{ ansible_default_ipv4.interface }}
         -m state --state RELATED,ESTABLISHED -j ACCEPT
       register: forward_established_check
       changed_when: false
@@ -50,21 +45,21 @@
 
     - name: Add FORWARD established rule if missing
       ansible.builtin.command: >
-        iptables -A FORWARD -i {{ default_iface.stdout }} -o {{ default_iface.stdout }}
+        iptables -A FORWARD -i {{ ansible_default_ipv4.interface }} -o {{ ansible_default_ipv4.interface }}
         -m state --state RELATED,ESTABLISHED -j ACCEPT
       when: forward_established_check.rc == 1
       register: add_forward_established
 
     - name: Check FORWARD rule
       ansible.builtin.command: >
-        iptables -C FORWARD -i {{ default_iface.stdout }} -o {{ default_iface.stdout }} -j ACCEPT
+        iptables -C FORWARD -i {{ ansible_default_ipv4.interface }} -o {{ ansible_default_ipv4.interface }} -j ACCEPT
       register: forward_check
       changed_when: false
       failed_when: forward_check.rc not in [0, 1]
 
     - name: Add FORWARD rule if missing
       ansible.builtin.command: >
-        iptables -A FORWARD -i {{ default_iface.stdout }} -o {{ default_iface.stdout }} -j ACCEPT
+        iptables -A FORWARD -i {{ ansible_default_ipv4.interface }} -o {{ ansible_default_ipv4.interface }} -j ACCEPT
       when: forward_check.rc == 1
       register: add_forward
 
@@ -96,3 +91,4 @@
         that:
           - "'MASQUERADE' in nat_table.stdout"
         fail_msg: "MASQUERADE rule not found"
+        
