@@ -1,14 +1,20 @@
-- name: Restart Instances
+- name: Reboot Instance(s)
   hosts: role_bastion,role_nat,role_private
   gather_facts: false
-  become: yes
+  become: true
 
   tasks:
-    - name: Reboot the system
+    - name: Check if reboot is required
+      ansible.builtin.stat:
+        path: /var/run/reboot-required
+      register: reboot_required_file
+
+    - name: Reboot the system if required
       ansible.builtin.reboot:
         msg: "Reboot initiated by Ansible"
         reboot_timeout: 60
         pre_reboot_delay: 10
         post_reboot_delay: 10
         test_command: whoami
-        
+      when: reboot_required_file.stat.exists
+      

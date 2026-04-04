@@ -91,4 +91,4 @@
         that:
           - "'MASQUERADE' in nat_table.stdout"
         fail_msg: "MASQUERADE rule not found"
-        
+                
