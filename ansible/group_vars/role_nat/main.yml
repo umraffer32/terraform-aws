@@ -1,0 +1,4 @@
+ansible_host: "{{ private_ip_address }}"
+ansible_ssh_common_args: >-
+  -o ProxyJump=ubuntu@{{ hostvars[groups['role_bastion'][0]].public_ip_address }}
+  
