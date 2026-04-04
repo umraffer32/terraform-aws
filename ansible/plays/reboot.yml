@@ -1,0 +1,13 @@
+- name: Restart Instances
+  hosts: role_bastion,role_nat,role_private
+  gather_facts: true
+  become: yes
+
+  tasks:
+    - name: ====== Reboot the system ======
+      ansible.builtin.reboot:
+        msg: "Reboot initiated by Ansible"
+        reboot_timeout: 60
+        pre_reboot_delay: 10
+        post_reboot_delay: 10
+        test_command: whoami
