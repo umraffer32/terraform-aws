@@ -7,4 +7,4 @@ key_name = "YOUR PRIVATE AWS KEY NAME"
 
 
 ## Update the above variables with your own values
-## Then copy this file to terraform.tfvars and run terraform apply
+## Then copy this file to terraform.tfvars and run the deployment script deploy.sh
