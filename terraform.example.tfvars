@@ -8,3 +8,9 @@ key_name = "YOUR PRIVATE AWS KEY NAME"
 
 ## Update the above variables with your own values
 ## Then copy this file to terraform.tfvars and run the deployment script deploy.sh
+
+
+## Requirements:
+## - AWS account
+## - AWS CLI installed and configured
+## - An existing EC2 key pair (key_name above must match)
