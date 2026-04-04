@@ -1,5 +1,8 @@
 admin_cidr = "YOUR PUBLIC IP/32"
 key_name   = "YOUR EC2 KEY PAIR NAME"
+private_1_count = 1                       # Default is 1. Set this number higher if you want more than 1 instance in the subnet
+private_2_count = 1                       # DO NOT LEAVE BLANK!!!
+
 
 #  Examples:
 #  admin_cidr = "1.1.1.1/32"
