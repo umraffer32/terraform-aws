@@ -9,7 +9,8 @@ terraform apply -auto-approve
 echo "Switching to Ansible..."
 cd ansible
 
-echo "Running deployment..."
+echo "Configuring Instances..."
+echo "Standby..."
 ansible-playbook plays/full-deployment.yml
 
 echo "Deployment complete!"
