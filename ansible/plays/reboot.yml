@@ -1,6 +1,6 @@
 - name: Restart Instances
   hosts: role_bastion,role_nat,role_private
-  gather_facts: true
+  gather_facts: false
   become: yes
 
   tasks:
