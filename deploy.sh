@@ -16,7 +16,13 @@ ansible-playbook plays/update.yml -l role_bastion,role_nat
 echo "Configuring NAT..."
 ansible-playbook plays/nat.yml
 
+echo "Rebooting Bastion and NAT..."
+ansible-playbook plays/reboot.yml -l role_bastion,role_nat
+
 echo "Updating Private Instances..."
 ansible-playbook plays/update.yml -l role_private
+
+echo "Rebooting Private Instances..."
+ansible-playbook plays/reboot.yml -l role_private
 
 echo "Deployment complete!"
