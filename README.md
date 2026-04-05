@@ -135,3 +135,11 @@ This ensures consistent and predictable deployments across multiple runs.
 - Idempotent Ansible configuration
 - Conditional reboots based on system requirements
 - Clean deployment output with summarized Terraform outputs
+
+## Future Improvements
+
+- Convert Ansible plays into reusable roles
+- Add tagging support for partial deployments
+- Implement rolling updates using `serial` for large-scale environments
+- Replace NAT instance with AWS NAT Gateway
+- Enhance logging and output formatting
