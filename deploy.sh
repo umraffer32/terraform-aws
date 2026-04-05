@@ -4,7 +4,8 @@ set -euo pipefail
 cd ~/terraform-aws
 
 echo "Applying Terraform configuration..."
-terraform apply -auto-approve
+terraform apply -auto-approve > /dev/null 2>&1
+terraform output > outputs.txt
 
 echo "Switching to Ansible..."
 cd ansible
@@ -13,4 +14,8 @@ echo "Configuring Instances..."
 echo "Standby..."
 ansible-playbook plays/full-deployment.yml
 
+echo ""
+cat ~/terraform-aws/outputs.txt
+echo ""
 echo "Deployment complete!"
+
