@@ -62,3 +62,15 @@ terraform-aws/
 - Existing EC2 key pair in AWS
 - SSH private key stored locally (e.g., `~/.ssh/YOURKEY.pem`)
 
+## Configuration
+
+Copy the example variables file:
+```
+cp terraform.example.tfvars terraform.tfvars
+```
+Then update the values in terraform.tfvars:
+
+admin_cidr = your public IP in CIDR format
+key_name = your existing AWS EC2 key pair name
+private_1_count = number of private instances in subnet 1
+private_2_count = number of private instances in subnet 2
