@@ -75,3 +75,10 @@ Then update the values in **terraform.tfvars**:
 - private_1_count = number of private instances in subnet 1
 - private_2_count = number of private instances in subnet 2
 
+## Deployment
+
+Run the deployment script:
+
+```bash
+./deploy.sh
+```
