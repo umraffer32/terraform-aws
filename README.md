@@ -82,3 +82,12 @@ Run the deployment script:
 ```bash
 ./deploy.sh
 ```
+
+This will:
+
+1) Apply Terraform infrastructure
+2) Configure instances with Ansible
+3) Set up NAT routing and persistence
+4) Reboot instances if required
+5) Output infrastructure details at the end
+
