@@ -91,3 +91,14 @@ This will:
 4) Reboot instances if required
 5) Output infrastructure details at the end
 
+## SSH Access
+
+This project uses a bastion host as the single public SSH entry point.
+
+- Your machine connects directly to the bastion using its public IP
+- The NAT instance is managed through the bastion using its private IP
+- Private instances are also managed through the bastion using their private IPs
+
+### Access Path
+
+Your Machine → Bastion (public) → NAT / Private Instances (private)
