@@ -102,3 +102,15 @@ This project uses a bastion host as the single public SSH entry point.
 ### Access Path
 
 Your Machine → Bastion (public) → NAT / Private Instances (private)
+
+## Why the NAT Instance Still Has a Public IP
+
+The NAT instance is administered using its **private IP** through the bastion host, but it still requires a **public IP** for outbound internet access.
+
+This is because private instances do not have public IPs and rely on the NAT instance to reach the internet for package updates and other outbound traffic.
+
+### Design Summary
+
+- **Bastion** = public SSH entry point
+- **NAT** = public for egress, private for management
+- **Private instances** = private only
