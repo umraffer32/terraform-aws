@@ -124,3 +124,14 @@ This deployment is fully idempotent.
 - Reboots only occur when the system explicitly requires it (`/var/run/reboot-required`)
 
 This ensures consistent and predictable deployments across multiple runs.
+
+## Key Features
+
+- Bastion-based SSH access (no direct access to private instances)
+- NAT instance providing outbound internet for private subnets
+- Private instances with no public IPs
+- Security group-based access control (no subnet-wide trust)
+- Scalable private instances using Terraform `count`
+- Idempotent Ansible configuration
+- Conditional reboots based on system requirements
+- Clean deployment output with summarized Terraform outputs
