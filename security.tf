@@ -1,6 +1,6 @@
 resource "aws_security_group" "bastion_sg" {
   tags = {
-    Name = "bastion-sg"
+    Name = "Bastion-SG"
   }
 
   name        = "bastion-sg"
@@ -26,7 +26,7 @@ resource "aws_security_group" "bastion_sg" {
 
 resource "aws_security_group" "private_sg" {
   tags = {
-    Name = "private-sg"
+    Name = "Private-SG"
   }
 
   name        = "private-sg"
@@ -52,7 +52,7 @@ resource "aws_security_group" "private_sg" {
 
 resource "aws_security_group" "nat_sg" {
   tags = {
-    Name = "nat-sg"
+    Name = "NAT-SG"
   }
 
   name        = "nat-sg"

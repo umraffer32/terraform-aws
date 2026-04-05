@@ -1,6 +1,6 @@
 resource "aws_vpc" "main" {
   tags = {
-    Name = "main-vpc"
+    Name = "VPC-1"
   }
 
   cidr_block           = "10.0.0.0/16"
@@ -10,7 +10,7 @@ resource "aws_vpc" "main" {
 
 resource "aws_internet_gateway" "igw" {
   tags = {
-    Name = "main-igw"
+    Name = "VPC-1-IGW"
   }
 
   vpc_id = aws_vpc.main.id
@@ -18,7 +18,7 @@ resource "aws_internet_gateway" "igw" {
 
 resource "aws_subnet" "public" {
   tags = {
-    Name = "public-subnet"
+    Name = "VPC-1-Public-Subnet"
   }
 
   vpc_id                  = aws_vpc.main.id
@@ -29,7 +29,7 @@ resource "aws_subnet" "public" {
 
 resource "aws_subnet" "private_1" {
   tags = {
-    Name = "private-subnet-1"
+    Name = "VPC-1-Private-Subnet-1"
   }
 
   vpc_id            = aws_vpc.main.id
@@ -39,7 +39,7 @@ resource "aws_subnet" "private_1" {
 
 resource "aws_subnet" "private_2" {
   tags = {
-    Name = "private-subnet-2"
+    Name = "VPC-1-Private-Subnet-2"
   }
 
   vpc_id            = aws_vpc.main.id
@@ -49,7 +49,7 @@ resource "aws_subnet" "private_2" {
 
 resource "aws_route_table" "public" {
   tags = {
-    Name = "public-route-table"
+    Name = "VPC-1-Public-RTB"
   }
 
   vpc_id = aws_vpc.main.id
@@ -68,7 +68,7 @@ resource "aws_route_table_association" "public" {
 
 resource "aws_route_table" "private_1" {
   tags = {
-    Name = "private-route-table-1"
+    Name = "VPC-1-Private-RTB-1"
   }
 
   vpc_id = aws_vpc.main.id
@@ -76,7 +76,7 @@ resource "aws_route_table" "private_1" {
 
 resource "aws_route_table" "private_2" {
   tags = {
-    Name = "private-route-table-2"
+    Name = "VPC-1-Private-RTB-2"
   }
 
   vpc_id = aws_vpc.main.id

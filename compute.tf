@@ -46,7 +46,7 @@ resource "aws_instance" "private_1" {
   count = var.private_1_count
 
   tags = {
-    Name = "sn1-private-${count.index + 1}"
+    Name = "SN1-Private-${count.index + 1}"
     Role = "private"
   }
 
@@ -61,7 +61,7 @@ resource "aws_instance" "private_2" {
   count = var.private_2_count
 
   tags = {
-    Name = "sn2-private-${count.index + 1}"
+    Name = "SN2-Private-${count.index + 1}"
     Role = "private"
   }
 
