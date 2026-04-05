@@ -51,3 +51,14 @@ terraform-aws/
 ├── variables.tf
 ├── terraform.example.tfvars
 └── README.md
+```
+
+## Prerequisites
+
+- AWS account
+- AWS CLI installed and configured (`aws configure`)
+- Terraform installed
+- Ansible installed
+- Existing EC2 key pair in AWS
+- SSH private key stored locally (e.g., `~/.ssh/YOURKEY.pem`)
+
