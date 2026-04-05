@@ -143,3 +143,12 @@ This ensures consistent and predictable deployments across multiple runs.
 - Implement rolling updates using `serial` for large-scale environments
 - Replace NAT instance with AWS NAT Gateway
 - Enhance logging and output formatting
+
+## Cleanup
+
+To destroy all resources:
+
+```bash
+terraform destroy -auto-approve
+```
+
