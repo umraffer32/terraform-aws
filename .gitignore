@@ -6,3 +6,4 @@
 *.code-workspace
 terraform.tfvars
 kill-hosts.sh
+outputs.txt
