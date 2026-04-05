@@ -82,3 +82,5 @@ output "instances" {
 
   }
 }
+
+# This TF file was dependant upon existing AWS infrastructure. Leaving it on here as a reference to look back on.
