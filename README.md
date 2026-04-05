@@ -114,3 +114,13 @@ This is because private instances do not have public IPs and rely on the NAT ins
 - **Bastion** = public SSH entry point
 - **NAT** = public for egress, private for management
 - **Private instances** = private only
+
+## Idempotence
+
+This deployment is fully idempotent.
+
+- The first run performs all provisioning and configuration
+- Subsequent runs result in no changes if the infrastructure is already in the desired state
+- Reboots only occur when the system explicitly requires it (`/var/run/reboot-required`)
+
+This ensures consistent and predictable deployments across multiple runs.
