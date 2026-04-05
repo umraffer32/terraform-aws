@@ -152,9 +152,3 @@ To destroy all resources:
 terraform destroy --auto-approve
 ```
 
-## Notes
-
-This project was built as a hands-on exercise to design, deploy, and manage AWS infrastructure using Terraform and Ansible.
-
-It focuses on secure access patterns, automation, and repeatable deployments.
-
