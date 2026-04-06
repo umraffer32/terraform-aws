@@ -14,4 +14,27 @@
       ansible.builtin.apt:
         name: locales-all
         state: present
-        
+
+# - name: Update and Upgrade
+#   hosts: all
+#   gather_facts: false
+
+#   pre_tasks:
+#     - name: Wait for SSH to become available
+#       ansible.builtin.wait_for_connection:
+#         timeout: 300
+#         delay: 5
+#         sleep: 5
+
+#   tasks:
+#     - name: Update apt cache and upgrade packages
+#       ansible.builtin.apt:
+#         update_cache: yes
+#         upgrade: dist
+#       become: true
+
+#     - name: Install locales-all
+#       ansible.builtin.apt:
+#         name: locales-all
+#         state: present
+#       become: true        
