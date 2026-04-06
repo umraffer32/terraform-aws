@@ -3,6 +3,13 @@
   become: true
   gather_facts: false
 
+  pre_tasks:
+    - name: Wait for SSH to become available
+      ansible.builtin.wait_for_connection:
+        timeout: 300
+        delay: 5
+        sleep: 5
+
   tasks:
     - name: Update apt cache and upgrade packages
       ansible.builtin.apt:
