@@ -29,33 +29,33 @@ resource "aws_instance" "nat" {
   key_name                    = var.key_name
 }
 
-# resource "aws_instance" "private_1" {
-#   count = var.private_1_count
+resource "aws_instance" "private_1" {
+  count = var.private_1_count
 
-#   tags = {
-#     Name = "SN1-Private-${count.index + 1}"
-#     Role = "private"
-#   }
+  tags = {
+    Name = "SN1-Private-${count.index + 1}"
+    Role = "private"
+  }
 
-#   ami                    = data.aws_ami.ubuntu.id
-#   instance_type          = "t2.micro"
-#   subnet_id              = aws_subnet.private_1.id
-#   vpc_security_group_ids = [aws_security_group.private_sg.id]
-#   key_name               = var.key_name
-# }
+  ami                    = data.aws_ami.ubuntu.id
+  instance_type          = "t2.micro"
+  subnet_id              = aws_subnet.private_1.id
+  vpc_security_group_ids = [aws_security_group.private_sg.id]
+  key_name               = var.key_name
+}
 
-# resource "aws_instance" "private_2" {
-#   count = var.private_2_count
+resource "aws_instance" "private_2" {
+  count = var.private_2_count
 
-#   tags = {
-#     Name = "SN2-Private-${count.index + 1}"
-#     Role = "private"
-#   }
+  tags = {
+    Name = "SN2-Private-${count.index + 1}"
+    Role = "private"
+  }
 
-#   ami                    = data.aws_ami.ubuntu.id
-#   instance_type          = "t2.micro"
-#   subnet_id              = aws_subnet.private_2.id
-#   vpc_security_group_ids = [aws_security_group.private_sg.id]
-#   key_name               = var.key_name
-# }
+  ami                    = data.aws_ami.ubuntu.id
+  instance_type          = "t2.micro"
+  subnet_id              = aws_subnet.private_2.id
+  vpc_security_group_ids = [aws_security_group.private_sg.id]
+  key_name               = var.key_name
+}
 
