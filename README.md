@@ -63,7 +63,7 @@ The environment is deployed inside a custom VPC and is split across public and p
 
 ```bash
 # Clone the repository
-git clone <your-repo-url>
+git clone https://github.com/umraffer32/terraform-aws.git
 cd terraform-aws
 ```
 
