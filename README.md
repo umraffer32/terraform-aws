@@ -1,3 +1,5 @@
+# AWS Terraform Automation with Ansible Configuration
+
 ## Overview
 
 This project provisions a complete AWS networking and compute environment using Terraform and configures instances using Ansible. The architecture includes a custom VPC with public and private subnets, a bastion host for secure access, and a NAT instance to provide outbound internet access for private instances. Terraform is used to build the infrastructure, while Ansible is used to configure and manage the instances after deployment.
