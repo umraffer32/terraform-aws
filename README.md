@@ -59,6 +59,8 @@ The environment is deployed inside a custom VPC and is split across public and p
 - Terraform installed
 - Ansible installed
 
+Visit the [terraform.example.tfvars](https://github.com/umraffer32/terraform-aws/blob/main/terraform.example.tfvars) file to configure variables needed for deployment.
+
 ### Steps
 
 ```bash
@@ -73,8 +75,8 @@ cd terraform-aws
 ```
 
 ```bash
-# Destroy infrastructure when finished
-terraform destroy --auto-approve
+# Clean SSH keys - Destroy infrastructure when finished
+./wipe.sh
 ```
 
 ## Key Concepts Demonstrated
