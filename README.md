@@ -8,7 +8,7 @@ This project provisions a complete AWS networking and compute environment using 
 
 ![Architecture Diagram](images/architecture.png)
 
-The environment is deployed inside a custom VPC and is split across public and private subnets. This project uses the same architecture as a previous [ansible project](https://github.com/umraffer32/ansible/blob/main/README.md). The difference comes from the automatic deployment of the AWS infrastructure as opposed to using an existing one.
+The environment is deployed inside a custom VPC and is split across public and private subnets. This project uses the same architecture as a previous [ansible project](https://github.com/umraffer32/ansible/blob/main/README.md). The difference comes from the automatic deployment of the AWS infrastructure as opposed to using an existing resources.
 
 - **Public Subnet**
   - Bastion host (SSH access point)
@@ -21,24 +21,6 @@ The environment is deployed inside a custom VPC and is split across public and p
 - **Access Flow**
   - User → Bastion Host → Private Instances
   - Private Instances → NAT → Internet
-
-## What This Project Does
-
-- Provisions a custom VPC with public and private subnets using Terraform
-- Deploys a bastion host for secure SSH access
-- Deploys a NAT instance to allow private instances outbound internet access
-- Launches multiple EC2 instances in private subnets
-- Uses Ansible to configure instances after deployment
-- Implements SSH ProxyCommand for secure access to private instances
-- Uses dynamic inventory to automatically discover AWS resources
-
-## Technologies Used
-
-- AWS (VPC, EC2, Security Groups, Networking, Subnets, Route Tables, Associations)
-- Terraform (Infrastructure as Code)
-- Ansible (Configuration Management)
-- SSH (ProxyCommand / Bastion Access)
-- Linux (Ubuntu 24.04 / Debian 13)
 
 ## How It Works
 
