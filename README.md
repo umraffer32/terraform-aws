@@ -4,6 +4,8 @@ This project provisions a complete AWS networking and compute environment using 
 
 ## Architecture
 
+![Architecture Diagram](images/architecture.png)
+
 The environment is deployed inside a custom VPC and is split across public and private subnets. This project uses the same architecture as a previous [ansible project](https://github.com/umraffer32/ansible/blob/main/README.md). The difference comes from the automatic deployment of the AWS infrastructure as opposed to using an existing one.
 
 - **Public Subnet**
@@ -17,8 +19,6 @@ The environment is deployed inside a custom VPC and is split across public and p
 - **Access Flow**
   - User → Bastion Host → Private Instances
   - Private Instances → NAT → Internet
-
-![Architecture Diagram](images/architecture.png)
 
 ## What This Project Does
 
@@ -59,7 +59,7 @@ The environment is deployed inside a custom VPC and is split across public and p
 - Terraform installed
 - Ansible installed
 
-Visit the [terraform.example.tfvars](https://github.com/umraffer32/terraform-aws/blob/main/terraform.example.tfvars) file to configure variables needed for deployment.
+Visit the [terraform.example.tfvars](https://github.com/umraffer32/terraform-aws/blob/main/terraform.example.tfvars) file to configure variables needed for deployment. Follow the instructions on this file before launching the scripts below.
 
 ### Steps
 
