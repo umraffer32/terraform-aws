@@ -105,6 +105,8 @@ cd terraform-aws
 - **SSH host key errors from duplicate IPs in the known_hosts file.**
   This was solved with the creation of a tear down script which dynamically cleans the IPs outputted from the deployment.
 
+![SSH Host Key Error](images/ssh-host-key-error.png)  
+
 ## Future Improvements
 
 - Replace NAT instance with NAT Gateway for managed high availability
