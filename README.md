@@ -101,8 +101,8 @@ cd terraform-aws
 - **Group variable loading was inconsistent**  
   Fixed by aligning `group_vars` naming with Ansible inventory group names.
 
-![Group Host Variables](images/group_vars.png)
 ![EC2 Dynamic Inventory](images/keyed-groups.png)  
+![Group Host Variables](images/group_vars.png)
 
 - **SSH host key errors from duplicate IPs in the known_hosts file.**
   This was solved with the creation of a tear down script which dynamically cleans the IPs outputted from the deployment.
