@@ -41,7 +41,7 @@ The environment is deployed inside a custom VPC and is split across public and p
 - Terraform installed
 - Ansible installed
 
-Visit the [terraform.example.tfvars](https://github.com/umraffer32/terraform-aws/blob/main/terraform.example.tfvars) file to configure variables needed for deployment. Follow the instructions on this file before launching the scripts below.
+First, clone the repository. Visit the [terraform.example.tfvars](https://github.com/umraffer32/terraform-aws/blob/main/terraform.example.tfvars) file to configure variables needed for deployment. Launch deployment and teardown scripts once variables have been set.
 
 ### Steps
 
