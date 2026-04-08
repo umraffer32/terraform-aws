@@ -90,8 +90,10 @@ cd terraform-aws
 
 ## Problems & Fixes
 
-- **SSH access to private instances failed**  
-  Fixed by using the bastion host as a jump host with ProxyCommand.
+- **SSH access to bastion using public IP**  
+  Fixed by explicity commanding ansible to use bastion's public IP and not DNS.
+
+![Bastion IP](images/bastion-public-ip.png)  
 
 - **Ansible user mismatch caused SSH permission denied errors**  
   Fixed by explicitly setting the correct remote user for bastion and private hosts.
