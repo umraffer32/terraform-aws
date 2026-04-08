@@ -92,7 +92,7 @@ cd terraform-aws
 ![Group Host Variables](images/group_vars.png)
 
 - **SSH host key errors from duplicate IPs in the known_hosts file.**
-  This was solved with the creation of a tear down script which dynamically cleans the IPs outputted from the deployment.
+This was solved with the creation of a tear down script which dynamically cleans the IPs outputted from the deployment.
 
 ![SSH Host Key Error](images/ssh-host-key-error.png)  
 ![SSH Host Key Fix](images/ssh-key-fix.png)  
