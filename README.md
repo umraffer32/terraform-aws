@@ -88,6 +88,9 @@ cd terraform-aws
 - Dynamic Inventory with AWS EC2 Plugin
 - Idempotent Configuration Management
 
+![First Run](images/first-run3.png)  
+![Verify Idempotence](images/verify-idempotence.png)  
+
 ## Problems & Fixes
 
 - **SSH access to bastion using public IP**  
