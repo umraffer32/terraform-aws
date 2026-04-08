@@ -91,12 +91,12 @@ cd terraform-aws
 ## Problems & Fixes
 
 - **SSH access to bastion using public IP**  
-  Fixed by explicity commanding ansible to use bastion's public IP and not DNS.
-
-![Bastion IP](images/bastion-public-ip.png)  
+  Fixed by explicity commanding ansible to use bastion's public IP and not DNS.  
 
 - **Ansible user mismatch caused SSH permission denied errors**  
   Fixed by explicitly setting the correct remote user for bastion and private hosts.
+
+![Bastion IP](images/bastion-public-ip.png)  
 
 - **Group variable loading was inconsistent**  
   Fixed by aligning `group_vars` naming with Ansible inventory group names.
@@ -108,6 +108,8 @@ cd terraform-aws
   This was solved with the creation of a tear down script which dynamically cleans the IPs outputted from the deployment.
 
 ![SSH Host Key Error](images/ssh-host-key-error.png)  
+![SSH Host Key Fix](images/ssh-key-fix.png)  
+
 
 ## Future Improvements
 
