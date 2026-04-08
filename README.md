@@ -112,7 +112,7 @@ cd terraform-aws
 
 ![SSH Host Key Error](images/ssh-host-key-error.png)  
 ![SSH Host Key Fix](images/ssh-key-fix.png)  
-
+![Clean Wipe](images/clean-wipe-script.png)  
 
 ## Future Improvements
 
