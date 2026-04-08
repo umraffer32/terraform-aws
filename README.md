@@ -92,23 +92,17 @@ cd terraform-aws
 
 ## Problems & Fixes
 
-- **Private instances had no internet access**  
-  Fixed by configuring the NAT instance for IP forwarding and MASQUERADE.
-
-- **Private subnet routing failed**  
-  Fixed by updating route tables to send outbound traffic through the NAT instance.
-
 - **SSH access to private instances failed**  
   Fixed by using the bastion host as a jump host with ProxyCommand.
-
-- **Dynamic bastion public IP caused connection issues**  
-  Fixed by referencing the bastion host dynamically through Ansible inventory and host variables.
 
 - **Ansible user mismatch caused SSH permission denied errors**  
   Fixed by explicitly setting the correct remote user for bastion and private hosts.
 
 - **Group variable loading was inconsistent**  
   Fixed by aligning `group_vars` naming with Ansible inventory group names.
+
+- ** SSH host key errors from duplicate IPs in the known_hosts file.**
+  This was solved with the creation of a tear down script which dynamically cleans the IPs outputted from the deployment.
 
   ## Future Improvements
 
