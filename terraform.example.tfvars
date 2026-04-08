@@ -10,19 +10,12 @@ private_2_count = 1                       # DO NOT LEAVE BLANK!!!
 
 
 # Update the above variables with your own values
-# Then copy this file to terraform.tfvars and run the deployment script deploy.sh
-
-
-# ======= REQUIREMENTS BELOW =======:
-
-# AWS account
-# AWS CLI installed and configured
-# An existing EC2 key pair (key_name above must match)
+# Then copy this file to terraform.tfvars and run the deployment script "deploy.sh"
 
 
 # NOTE:
-# Ansible uses group_vars to control connections to nat and private instances
-# For manual SSH troubleshooting, use the SSH config below
+# Ansible uses group_vars to control connections to EC2 instances
+# For manual SSH connections use the SSH config below
 # Default username for Debian 13 AWS instances is admin
 
 
