@@ -11,7 +11,7 @@ private_2_count = 1                       # DO NOT LEAVE BLANK!!!
 
 
 # UPDATE THE VARIABLES ABOVE WITH YOUR OWN VALUES BEFORE PROCEEDING!!
-# COPY THIS FILE TO **terraform.tfvars**
+# RENAME THIS FILE TO **terraform.tfvars**
 
 # NOTE:
 # Ansible uses group_vars to control connections to EC2 instances
