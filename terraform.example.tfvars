@@ -9,14 +9,13 @@ private_2_count = 1                       # DO NOT LEAVE BLANK!!!
 #  key_name = "Alpha"
 
 
-# Update the above variables with your own values
-# Then copy this file to terraform.tfvars and run the deployment script "deploy.sh"
 
+# UPDATE THE VARIABLES ABOVE WITH YOUR OWN VALUES BEFORE PROCEEDING!!
+# COPY THIS FILE TO **terraform.tfvars**
 
 # NOTE:
 # Ansible uses group_vars to control connections to EC2 instances
-# For manual SSH connections use the SSH config below
-# Default username for Debian 13 AWS instances is admin
+# For manual SSH connections use the SSH config below:
 
 
 # Host bastion
