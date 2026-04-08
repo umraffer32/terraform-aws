@@ -18,7 +18,7 @@ The environment is deployed inside a custom VPC and is split across public and p
   - User → Bastion Host → Private Instances
   - Private Instances → NAT → Internet
 
-<!-- ![Architecture Diagram](images/architecture.png) -->
+![Architecture Diagram](images/architecture.png)
 
 ## What This Project Does
 
