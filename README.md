@@ -4,7 +4,7 @@ This project provisions a complete AWS networking and compute environment using 
 
 ## Architecture
 
-The environment is deployed inside a custom VPC and is split across public and private subnets.
+The environment is deployed inside a custom VPC and is split across public and private subnets. This project uses the same architecture as a previous [ansible project](https://github.com/umraffer32/ansible). The difference comes from the automatic deployment of the AWS infrastructure as opposed to using an existing one.
 
 - **Public Subnet**
   - Bastion host (SSH access point)
