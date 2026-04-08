@@ -38,8 +38,6 @@ The environment is deployed inside a custom VPC and is split across public and p
 - SSH (ProxyCommand / Bastion Access)
 - Linux (Ubuntu 24.04 / Debian 13)
 
-<!-- ## Project Structure -->
-
 ## How It Works
 
 1. Terraform provisions the AWS infrastructure, including the VPC, subnets, security groups, and EC2 instances.
@@ -104,7 +102,7 @@ cd terraform-aws
 - **SSH host key errors from duplicate IPs in the known_hosts file.**
   This was solved with the creation of a tear down script which dynamically cleans the IPs outputted from the deployment.
 
-  ## Future Improvements
+## Future Improvements
 
 - Replace NAT instance with NAT Gateway for managed high availability
 - Implement Application Load Balancer (ALB)
