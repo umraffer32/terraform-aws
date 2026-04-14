@@ -22,6 +22,11 @@
         name: locales-all
         state: present
 
+    - name: Ensure en_US.UTF-8 locale exists
+      ansible.builtin.locale_gen:
+        name: en_US.UTF-8
+        state: present              
+
 - name: Update and Upgrade NAT
   hosts: role_nat
   become: true
@@ -38,6 +43,11 @@
       ansible.builtin.apt:
         name: locales-all
         state: present
+
+    - name: Ensure en_US.UTF-8 locale exists
+      ansible.builtin.locale_gen:
+        name: en_US.UTF-8
+        state: present      
 
 - name: Configure NAT instance
   hosts: role_nat
@@ -189,6 +199,11 @@
       ansible.builtin.apt:
         name: locales-all
         state: present
+
+    - name: Ensure en_US.UTF-8 locale exists
+      ansible.builtin.locale_gen:
+        name: en_US.UTF-8
+        state: present      
 
 - name: Restart Private Instances
   hosts: role_private
