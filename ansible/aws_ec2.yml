@@ -5,6 +5,8 @@ regions:
 filters:
   instance-state-name: running
 
+hostvars_prefix: aws_
+
 keyed_groups:
-  - key: tags.Role
+  - key: aws_tags.Role
     prefix: role
