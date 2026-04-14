@@ -2,9 +2,9 @@
 # ansible_ssh_common_args: >-
 #   -o ProxyJump=ubuntu@{{ hostvars[groups['role_bastion'][0]].public_ip_address }}
 
-ansible_host: "{{ private_ip_address }}"
+ansible_host: "{{ aws_private_ip_address }}"
 ansible_user: admin
 ansible_ssh_common_args: >-
-  -o ProxyCommand="ssh -i ~/.ssh/AWS.pem -W %h:%p admin@{{ hostvars[groups['role_bastion'][0]].public_ip_address }}"
+  -o ProxyCommand="ssh -i ~/.ssh/AWS.pem -W %h:%p admin@{{ hostvars[groups['role_bastion'][0]].aws_public_ip_address }}"
   -o StrictHostKeyChecking=accept-new
   

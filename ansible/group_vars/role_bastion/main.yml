@@ -1,4 +1,4 @@
-ansible_host: "{{ public_ip_address }}"
+ansible_host: "{{ aws_public_ip_address }}"
 ansible_user: admin
 ansible_ssh_common_args: >-
   -o StrictHostKeyChecking=accept-new
